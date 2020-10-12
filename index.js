@@ -11,11 +11,13 @@ if (params.u) {
   console.log(chalk.bgRgb(255, 140, 105)(params.u));
   requests.map(async (x, i) => {
     const reqNo = `#${`${i}`.padStart(numLength, "0")}`;
-    const resp = await fetch(params.u);
+    const resp = await fetch(params.u).catch((e) => e);
     if (resp.status === 200) {
       console.log(reqNo, chalk.green(resp.status));
-    } else {
+    } else if (typeof resp === "number") {
       console.log(reqNo, chalk.bgRedBright(resp.status));
+    } else {
+      console.log(reqNo, chalk.bgRedBright(resp));
     }
   });
 } else {
