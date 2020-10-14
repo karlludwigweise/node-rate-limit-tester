@@ -17,7 +17,7 @@ if (params.u) {
     } else if (typeof resp === "number") {
       console.log(reqNo, chalk.bgRedBright(resp.status));
     } else {
-      console.log(reqNo, chalk.bgRedBright(resp));
+      console.log(reqNo, chalk.bgRedBright("FAILED"));
     }
   });
 } else {
